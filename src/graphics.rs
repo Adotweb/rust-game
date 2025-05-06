@@ -609,10 +609,8 @@ impl<'a> State<'a> {
 
 
             
-            let mesh = &self.obj_model.meshes[0];
-            let material = &self.obj_model.materials[mesh.material];
             render_pass
-                .draw_mesh_instanced(mesh, material, 0..self.instances.len() as u32, &self.camera_bind_group);
+                .draw_model_instanced(&self.obj_model, 0..self.instances.len() as u32, &self.camera_bind_group);
         }
 
         // submit will accept anything that implements IntoIter

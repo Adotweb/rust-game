@@ -93,7 +93,6 @@ pub async fn load_model(
     )
     .await?;
 
-
     let mut materials = Vec::new();
     for m in obj_materials? {
         let diffuse_texture = load_texture(&m.diffuse_texture, device, queue).await?;
@@ -112,14 +111,12 @@ pub async fn load_model(
             label: None,
         });
 
-
         materials.push(model::Material {
             name: m.name,
             diffuse_texture,
             bind_group,
         })
     }
-
 
     let meshes = models
         .into_iter()
@@ -183,4 +180,3 @@ pub async fn load_model(
 
     Ok(model::Model { meshes, materials })
 }
-
